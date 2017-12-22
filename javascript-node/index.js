@@ -4,6 +4,8 @@ request('http://google.com', function(){
 });
 console.log('Yo voy despues de la peticion a google');*/
 
+//Promesa  Estados; fullfield:completa, rejected:no terminada con exito(error)
+//pending:pendiente, setled: finalizada con exito o con error
 const rp = require('request-promise');
 rp('http://google.com') // devuelve un objeto tipo Promise;
   .then(function(html){
@@ -11,4 +13,3 @@ rp('http://google.com') // devuelve un objeto tipo Promise;
   }).catch(function(err){
     console.log(err)
   });
-  
