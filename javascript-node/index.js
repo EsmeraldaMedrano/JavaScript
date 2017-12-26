@@ -33,9 +33,8 @@ leer('http://codigofacilito.com').then(function(response){
   console.log(err);
 });*/
 
-//multimples promesas
-
-let p1 = new Promise((resolve, reject)=> setTimeout(resolve,500,'HolaMundo'));
+//resolver multimples promesas
+/*let p1 = new Promise((resolve, reject)=> setTimeout(resolve,500,'HolaMundo'));
 let p2 = new Promise((resolve, reject)=> setTimeout(resolve,600,'segundo HolaMundo'));
 let p3 = Promise.reject();
 let saluda = ()=> console.log("Hola a todos");
@@ -43,8 +42,24 @@ let saluda = ()=> console.log("Hola a todos");
   p2.then(function(){
     saluda();
   });
-});*/ //infierno del callback
+}); //infierno del callback
 
 Promise.all([p1,p2,p3]).then(resultados=>{ //genera una promesa en caso de que sea exitosa o falle
   saluda();
-}).catch(()=> console.log('fallé'));
+}).catch(()=> console.log('fallé'));*/
+
+//ENCADENAR PROMESAS
+
+function calcular(){
+  return new Promise((resolve,reject)=>{
+    setTimeout(resolve,2000, 5);
+  });
+}
+function segundoCalculo(numero){
+  console.log(numero);
+  return new Promise((resolve,reject)=>{
+    setTimeout(resolve, 1000, "segunda Promesa");
+  });
+}
+
+calcular().then(segundoCalculo).then(console.log)
